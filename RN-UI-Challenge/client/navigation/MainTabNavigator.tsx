@@ -6,16 +6,16 @@ import { Platform, StyleSheet } from "react-native";
 import { useTheme } from "@/hooks/useTheme";
 import ChatScreen from "@/screens/ChatScreen";
 import ExploreScreen from "@/screens/ExploreScreen";
-import ItineraryScreen from "@/screens/ItineraryScreen";
-import StudentModeScreen from "@/screens/StudentModeScreen";
-import SettingsScreen from "@/screens/SettingsScreen";
+import MultiDayItineraryScreen from "@/screens/MultiDayItineraryScreen";
+import BudgetTrackerScreen from "@/screens/BudgetTrackerScreen";
+import SocialScreen from "@/screens/SocialScreen";
 
 export type MainTabParamList = {
   ChatTab: undefined;
   ExploreTab: undefined;
   ItineraryTab: undefined;
-  StudentTab: undefined;
-  SettingsTab: undefined;
+  BudgetTab: undefined;
+  SocialTab: undefined;
 };
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
@@ -71,31 +71,31 @@ export default function MainTabNavigator() {
       />
       <Tab.Screen
         name="ItineraryTab"
-        component={ItineraryScreen}
+        component={MultiDayItineraryScreen}
         options={{
-          title: "Itinerary",
+          title: "Trips",
           tabBarIcon: ({ color, size }) => (
             <Feather name="map" size={size} color={color} />
           ),
         }}
       />
       <Tab.Screen
-        name="StudentTab"
-        component={StudentModeScreen}
+        name="BudgetTab"
+        component={BudgetTrackerScreen}
         options={{
-          title: "Student",
+          title: "Budget",
           tabBarIcon: ({ color, size }) => (
-            <Feather name="book-open" size={size} color={color} />
+            <Feather name="dollar-sign" size={size} color={color} />
           ),
         }}
       />
       <Tab.Screen
-        name="SettingsTab"
-        component={SettingsScreen}
+        name="SocialTab"
+        component={SocialScreen}
         options={{
-          title: "Settings",
+          title: "Social",
           tabBarIcon: ({ color, size }) => (
-            <Feather name="settings" size={size} color={color} />
+            <Feather name="users" size={size} color={color} />
           ),
         }}
       />
