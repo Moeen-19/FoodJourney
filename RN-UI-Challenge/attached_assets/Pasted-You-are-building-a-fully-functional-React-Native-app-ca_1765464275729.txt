@@ -1,0 +1,294 @@
+You are building a fully functional React Native app called CityWhisper.
+Your goals:
+Create an end-to-end mobile app that lets users talk to any city using conversational AI powered by Yelp AI API, with deep dietary-aware discovery, smart budget recommendations, and itinerary planning for tourists, new residents, and international students.
+
+APP FUNCTIONALITY & BEHAVIORAL GOALS
+1. “Talk to Your City” Assistant (Main Feature)
+
+Build a conversational chat interface (text + optional voice).
+The assistant should handle prompts like:
+
+“Plan my day in Singapore within $40.”
+
+“Find vegan dinner options near me within ₹500.”
+
+“Compare these two cafés for studying.”
+
+“Where do students usually hang out in Toronto?”
+
+“Find quiet restaurants near me and reserve a table at 8 PM.”
+
+Use Yelp Conversational AI API to:
+
+Answer queries
+
+Generate business suggestions
+
+Compare businesses
+
+Trigger restaurant reservations (if supported)
+
+Return structured recommendation messages or lists
+
+2. EatFit Engine (Dietary-Aware AI Layer)
+
+Each user has a dietary profile:
+
+vegan / vegetarian
+
+halal
+
+kosher
+
+lactose-free
+
+gluten-free
+
+keto
+
+high-protein
+
+allergies
+
+disliked ingredients
+
+budget range
+
+preferred cuisines
+
+All results from Yelp API should be filtered with these constraints.
+
+Build:
+
+A Profile Setup screen
+
+A persistent user profile using local storage
+
+Automatic filtering of all discovery results
+
+Tags displayed on results (e.g., “Halal”, “Budget-Friendly”, “Keto-Compatible”)
+
+3. Smart Budget Intelligence (from ChefSwap Concept)
+
+For any food query, compute both:
+
+Eat-out option:
+Use Yelp price levels + location + top restaurants
+
+Cook-at-home option:
+Provide a simple recipe + estimated cost of ingredients
+
+Show differences like:
+
+total price
+
+time effort
+
+calories (optional)
+
+convenience
+
+Use a custom JS helper for price estimation logic.
+
+4. Micro Itineraries & Day Plans
+
+Using Yelp’s conversational capabilities:
+
+Generate 1-day or 3-day itineraries
+
+Generate meal-only itineraries
+
+Generate after-work plans
+
+Attach map-friendly coordinates to each stop
+
+Display routes visually (polyline optional)
+
+5. Student/New Resident Mode
+
+A dedicated screen that quickly shows:
+
+cheap meals
+
+study cafés
+
+late-night safe places
+
+affordable grocery stores
+
+areas to explore
+All using Yelp AI results filtered via user profile + budget.
+
+🎨 UI/UX GOALS & DESIGN SYSTEM (Give Replit AI This)
+Overall Style
+
+Modern, warm minimalism
+
+Soft color palette (warm beige, amber, cream, muted green)
+
+Slightly rounded components (12–16 radius)
+
+Smooth transitions for screen navigation
+
+Apple/Google Maps-like card overlays
+
+Dark mode with warm desaturated tones
+
+No clutter → clean, airy spacing
+
+Main Screens
+
+Welcome + Onboarding
+
+Dietary Profile Setup (EatFit)
+
+Main Chat (Talk to Your City)
+
+message bubbles
+
+result cards
+
+comparision cards
+
+“Reserve” CTA
+
+Explore Tab
+
+“Food”, “Coffee”, “Cheap Eats”, “Study Spots”
+
+Itinerary Builder
+
+Budget Planner (Cook vs Eat-Out)
+
+Student Survival Mode
+
+Settings (API key, Profile editing, etc.)
+
+Components Required
+
+Floating voice-input mic button
+
+Business card (image, price level, rating, tags)
+
+Compare card
+
+Horizontal cards list
+
+Chat message bubbles (user + AI)
+
+Map preview card
+
+CTA buttons: “Reserve”, “View Menu”, “Open Route”, “Compare”
+
+Chip tags (diet, price, cuisine, vibes)
+
+🔌 Specify Yelp AI API Services to Use (Give Replit This List)
+
+Your app MUST use Yelp AI API as the primary datasource.
+Replit should integrate the following:
+
+1. Yelp AI Conversational API
+
+For:
+
+natural language questions
+
+free-form city guidance
+
+personalized suggestions
+
+business comparisons
+
+reservations through agentic actions
+
+Endpoint: POST /v1/alpha/conversation
+(Depending on final Yelp AI API docs)
+
+2. Yelp Business Search (Fusion API)
+
+For:
+
+retrieving detailed business info
+
+geographic filtering
+
+cuisine/diet filtering
+
+pulling images, price, hours
+
+Endpoints:
+
+/v3/businesses/search
+
+/v3/businesses/{id}
+
+/v3/businesses/{id}/reviews
+
+3. Yelp Reservation Actions (Agentic AI)
+
+If available in API version:
+
+make reservation at restaurants
+
+check availability
+
+🏗️ ARCHITECTURE GOALS (Replit Should Follow This)
+Frontend
+
+React Native (Expo or bare RN)
+
+React Navigation
+
+Zustand or Context API for global state
+
+AsyncStorage for user profile
+
+Axios for API calls
+
+OpenStreetMap or Google Maps API integration
+
+Backend
+
+✦ Use serverless API route inside Replit
+
+small Node.js or Python server
+
+proxies Yelp API requests
+
+environment variable protection
+
+adds dietary + budget filters
+
+formats conversational results for mobile
+
+Folder Structure
+/src
+  /screens
+  /components
+  /hooks
+  /services
+  /context
+  /utils
+  /theme
+  /assets
+  App.js
+
+🧪 BONUS: Required Behaviors for Replit
+
+Generate dummy data before real API key integration.
+
+Structure reusable UI components.
+
+Provide stubs for API integration.
+
+Make the chat assistant fully functional with mock responses.
+
+Create plugin-like “Skill modules”:
+
+EatFit dietary filter
+
+Budget estimator
+
+Recommendation card renderer
+
+Ensure modifiable brand colors in a /theme/colors.js file.
